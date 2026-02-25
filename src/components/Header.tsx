@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../lib/AuthContext';
 import { supabase } from '../lib/supabase';
-import { LogOut, Plus, Search, Bell, Hexagon } from 'lucide-react';
+import { Plus, Search, Hexagon } from 'lucide-react';
+import { NotificationsDropdown } from './NotificationsDropdown';
 
 export function Header({ onSubmitProject }: { onSubmitProject: () => void }) {
     const { user, signOut } = useAuth();
@@ -56,10 +57,7 @@ export function Header({ onSubmitProject }: { onSubmitProject: () => void }) {
                         Submit project
                     </button>
 
-                    <button className="p-2.5 text-gray-400 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-colors relative">
-                        <Bell size={20} />
-                        <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 border-2 border-white rounded-full"></span>
-                    </button>
+                    <NotificationsDropdown />
 
                     <div className="h-8 w-[1px] bg-gray-200 mx-1 hidden sm:block"></div>
 
